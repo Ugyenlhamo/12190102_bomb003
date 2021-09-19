@@ -104,4 +104,120 @@ Dump of assembler code for function strings_not_equal:
    0x000000000040138e <+99>:    pop    %rbp
    0x000000000040138f <+100>:   pop    %r12
    0x0000000000401391 <+102>:   retq
-End of assembler dump.                                                                                                                                                           End of assembler dump. 
+End of assembler dump.  
+(gdb) disas
+Dump of assembler code for function phase_1:
+   0x0000000000400e8d <+0>:     sub    $0x8,%rsp
+   0x0000000000400e91 <+4>:     mov    $0x4023b0,%esi
+   0x0000000000400e96 <+9>:     callq  0x40132b <strings_not_equal>
+=> 0x0000000000400e9b <+14>:    test   %eax,%eax
+   0x0000000000400e9d <+16>:    je     0x400ea4 <phase_1+23>
+   0x0000000000400e9f <+18>:    callq  0x40142a <explode_bomb>
+   0x0000000000400ea4 <+23>:    add    $0x8,%rsp
+   0x0000000000400ea8 <+27>:    retq
+End of assembler dump.
+(gdb) i r
+rax            0x1                 1
+rbx            0x4021e0            4202976
+rcx            0x4                 4
+rdx            0x1                 1
+rsi            0x4023b0            4203440
+rdi            0x4023e4            4203492
+rbp            0x0                 0x0
+rsp            0x7ffffffee240      0x7ffffffee240
+r8             0x6037a0            6305696
+r9             0x7c                124
+r10            0xfffffffffffff6ed  -2323
+r11            0x7fffff5e7400      140737477768192
+r12            0x400c60            4197472
+r13            0x7ffffffee340      140737488282432
+r14            0x0                 0
+r15            0x0                 0
+rip            0x400e9b            0x400e9b <phase_1+14>
+eflags         0x283               [ CF SF IF ]
+cs             0x33                51
+ss             0x2b                43
+ds             0x0                 0
+es             0x0                 0
+fs             0x0                 0
+gs             0x0                 0
+
+(gdb) r
+Starting program: /mnt/c/Users/user/Desktop/Ugyen Lhamo/ITS304/Bomb LAB/Assignment 1/Assignment 1/bomb003/bomb
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Border relations with Canada have never been better.
+Breakpoint 2, 0x0000000000400e8d in phase_1 ()
+(gdb) disas
+Dump of assembler code for function phase_1:
+   0x0000000000400e8d <+0>:     sub    $0x8,%rsp
+=> 0x0000000000400e91 <+4>:     mov    $0x4023b0,%esi
+   0x0000000000400e96 <+9>:     callq  0x40132b <strings_not_equal>
+   0x0000000000400e9b <+14>:    test   %eax,%eax
+   0x0000000000400e9d <+16>:    je     0x400ea4 <phase_1+23>
+   0x0000000000400e9f <+18>:    callq  0x40142a <explode_bomb>
+   0x0000000000400ea4 <+23>:    add    $0x8,%rsp
+   0x0000000000400ea8 <+27>:    retq
+End of assembler dump.
+(gdb) x/s 0x4023b0
+0x4023b0:       "Border relations with Canada have never been better."
+(gdb) disas
+Dump of assembler code for function phase_1:
+   0x0000000000400e8d <+0>:     sub    $0x8,%rsp
+=> 0x0000000000400e91 <+4>:     mov    $0x4023b0,%esi
+   0x0000000000400e96 <+9>:     callq  0x40132b <strings_not_equal>
+   0x0000000000400e9b <+14>:    test   %eax,%eax
+   0x0000000000400e9d <+16>:    je     0x400ea4 <phase_1+23>
+   0x0000000000400e9f <+18>:    callq  0x40142a <explode_bomb>
+   0x0000000000400ea4 <+23>:    add    $0x8,%rsp
+   0x0000000000400ea8 <+27>:    retq
+End of assembler dump.
+(gdb) u*0x0000000000400e9b
+0x0000000000400e9b in phase_1 ()
+(gdb) disas
+Dump of assembler code for function phase_1:
+   0x0000000000400e8d <+0>:     sub    $0x8,%rsp
+   0x0000000000400e91 <+4>:     mov    $0x4023b0,%esi
+   0x0000000000400e96 <+9>:     callq  0x40132b <strings_not_equal>
+=> 0x0000000000400e9b <+14>:    test   %eax,%eax
+   0x0000000000400e9d <+16>:    je     0x400ea4 <phase_1+23>
+   0x0000000000400e9f <+18>:    callq  0x40142a <explode_bomb>
+   0x0000000000400ea4 <+23>:    add    $0x8,%rsp
+   0x0000000000400ea8 <+27>:    retq
+End of assembler dump.
+(gdb) i r
+rax            0x0                 0
+rbx            0x4021e0            4202976
+rcx            0x34                52
+rdx            0x0                 0
+rsi            0x4023b0            4203440
+rdi            0x4023e4            4203492
+rbp            0x0                 0x0
+rsp            0x7ffffffee240      0x7ffffffee240
+r8             0x6037a0            6305696
+r9             0x7c                124
+r10            0xfffffffffffff6ed  -2323
+r11            0x7fffff5e7400      140737477768192
+r12            0x400c60            4197472
+r13            0x7ffffffee340      140737488282432
+r14            0x0                 0
+r15            0x0                 0
+rip            0x400e9b            0x400e9b <phase_1+14>
+eflags         0x246               [ PF ZF IF ]
+cs             0x33                51
+ss             0x2b                43
+ds             0x0                 0
+es             0x0                 0
+fs             0x0                 0
+gs             0x0                 0
+
+(gdb) d
+Delete all breakpoints? (y or n) y
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /mnt/c/Users/user/Desktop/Ugyen Lhamo/ITS304/Bomb LAB/Assignment 1/Assignment 1/bomb003/bomb
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Border relations with Canada have never been better.
+Phase 1 defused. How about the next one?
