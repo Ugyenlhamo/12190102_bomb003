@@ -11,9 +11,9 @@ Dump of assembler code for function phase_4:
    0x0000000000401016 <+28>:	mov    $0x4025af,%esi      //input format %d %d     
    0x000000000040101b <+33>:	call   0x400bb0 <__isoc99_sscanf@plt>
    0x0000000000401020 <+38>:	cmp    $0x2,%eax            
-   0x0000000000401023 <+41>:	jne    0x40102b <phase_4+49>      // if number of input is not equal to 2 jump to explode bomb
+   0x0000000000401023 <+41>:	jne    0x40102b <phase_4+49>      // if number of input is not equal to 2 then it will jump to <explode bomb>.
    0x0000000000401025 <+43>:	cmpl   $0xe,(%rsp)                //compare 0xe = 14 : first input
-   0x0000000000401029 <+47>:	jbe    0x401030 <phase_4+54>      //if first input <= 14, skip bomb explode
+   0x0000000000401029 <+47>:	jbe    0x401030 <phase_4+54>      //if first input <= 14, it will skip teh <explode bomb>.
    0x000000000040102b <+49>:	call   0x40142a <explode_bomb>
    0x0000000000401030 <+54>:	mov    $0xe,%edx                  //%edx = 14
    0x0000000000401035 <+59>:	mov    $0x0,%esi                  //%esi = 0
@@ -32,7 +32,7 @@ Dump of assembler code for function phase_4:
    0x000000000040106c <+114>:	ret    
 End of assembler dump.
 
-
+// disassembler for <func4>. 
 (gdb) disas func4
 Dump of assembler code for function func4:
    0x0000000000400fbc <+0>:	sub    $0x8,%rsp      //makes stack frame
@@ -71,3 +71,21 @@ input format:
 
 (gdb) x/s 0x4025af
 0x4025af:	"%d %d"
+
+//We know our number needs to be less than 14 and this problem involves recursion. We also know that the last input needs to be 2. So 
+our format for the answer is "x 2". I just plugged in numbers from 1-14 for the first input and 4 worked well. So answer is 4 2
+
+solution
+(gdb) r
+Starting program: /mnt/c/Users/user/Desktop/Assignment 1/bomb003/bomb
+Welcome to my fiendish little bomb. You have 6 phases with
+which to blow yourself up. Have a nice day!
+Border relations with Canada have never been better.
+Phase 1 defused. How about the next one?
+0 1 1 2 3 5
+That's number 2.  Keep going!
+2 798
+Halfway there!
+4 2
+So you got that one.  Try this one.
+
